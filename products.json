@@ -1,0 +1,23 @@
+[
+  {
+    "id": "dragonfly",
+    "title": "Dragonfly Candle Holder",
+    "price": 250,
+    "description": "A hand-painted dragonfly design on glass, perfect for weddings and home décor.",
+    "images": ["images/christmas-ornaments-gift.jpg", "images/dragonfly2.jpg"]
+  },
+  {
+    "id": "rose",
+    "title": "Rose Garden Candle Holder",
+    "price": 30,
+    "description": "Romantic rose garden design, an elegant gift or decoration.",
+    "images": ["images/winter-gift.jpg", "images/winter-gift.jpg"]
+  },
+  {
+    "id": "restaurant",
+    "title": "Restaurant Candle Holder",
+    "price": 28,
+    "description": "Create warm ambience in your restaurant or dining table with this custom-painted holder.",
+    "images": ["images/glass-vases-for-wedding-centerpieces.jpg", "images/restaurant2.jpg"]
+  }
+]

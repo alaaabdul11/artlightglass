@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product | ArtLightGlass</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="shop.html">⬅ Back to Shop</a>
+    <a href="cart.html" id="cartIcon">🛒 <span id="cartCount">0</span></a>
+  </header>
+
+  <section id="productDetail"></section>
+
+  <script>
+    async function loadProduct() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+      const res = await fetch("products.json");
+      const products = await res.json();
+      const product = products.find(p => p.id === id);
+
+      if (!product) return document.getElementById("productDetail").innerHTML = "<p>Product not found.</p>";
+
+      document.title = product.title + " | ArtLightGlass";
+
+      document.getElementById("productDetail").innerHTML = `
+        <h1>${product.title}</h1>
+        <div class="gallery">
+          ${product.images.map(img => `<img src="${img}" alt="${product.title}">`).join("")}
+        </div>
+        <p>${product.description}</p>
+        <p><strong>Price:</strong> $${product.price.toFixed(2)}</p>
+        <label>Quantity: <input type="number" id="qty" value="1" min="1"></label>
+        <button onclick="addToCart('${product.id}')">Add to Cart</button>
+      `;
+    }
+    loadProduct();
+
+    function addToCart(id) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || {};
+      let qty = parseInt(document.getElementById("qty").value);
+      cart[id] = (cart[id] || 0) + qty;
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Added to cart!");
+    }
+  </script>
+</body>
+</html>
